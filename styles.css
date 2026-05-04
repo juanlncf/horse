@@ -1,0 +1,830 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cal Sans', 'Noto Sans', sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.input-section {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+#horseNames {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+#horseNames:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.options {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #555;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    accent-color: #3498db;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.tab-button.active {
+    color: #3498db;
+    border-bottom-color: #3498db;
+}
+
+.tab-button:hover {
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.game-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.player-setup {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.player-setup h3 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.setup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.setup-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.setup-item label {
+    font-weight: 600;
+    color: #555;
+}
+
+.setup-item input,
+.setup-item select {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.setup-item input:focus,
+.setup-item select:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.money-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.money-controls button {
+    padding: 6px 12px;
+    font-size: 14px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.money-controls button.confirm-btn {
+    background: #27ae60; /* Green */
+    padding: 6px 10px; /* Slightly smaller to fit emoji */
+    font-size: 18px; /* Bigger emoji */
+}
+
+.money-controls button.confirm-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.money-controls input {
+    width: 70px;
+}
+
+.boosts-section {
+    margin-bottom: 20px;
+}
+
+.boosts-section h4 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.boost-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.boost-btn {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.boost-btn:hover {
+    border-color: #3498db;
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.boost-btn.active {
+    border-color: #27ae60;
+    background: #27ae60;
+    color: white;
+}
+
+.boost-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.active-boosts {
+    font-size: 14px;
+    color: #555;
+}
+
+.betting-section {
+    margin-bottom: 20px;
+}
+
+.betting-section h4 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.bet-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.bet-controls input {
+    width: 60px;
+    padding: 6px 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+}
+
+.bet-controls button {
+    padding: 6px 12px;
+    background: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.game-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.game-buttons button {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#playGame {
+    background: #27ae60;
+    color: white;
+}
+
+#spectateGame {
+    background: #3498db;
+    color: white;
+}
+
+#resetGame {
+    background: #e74c3c;
+    color: white;
+}
+
+.game-buttons button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.prize-pool,
+.players-list,
+.leaderboard-section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.prize-pool h4,
+.players-list h4,
+.leaderboard-section h4 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.prize-pool div {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.prize-pool div:first-child {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+.prize-pool div:last-child {
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #27ae60;
+}
+
+.player-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    margin-bottom: 5px; /* Add margin */
+}
+
+.player-item:last-child {
+    border-bottom: none;
+}
+
+.player-name {
+    font-weight: 600;
+}
+
+.player-money {
+    color: #27ae60;
+}
+
+.player-bet {
+    color: #f39c12;
+}
+
+.player-item.winner-highlight {
+    border: 2px solid #FFD700; /* Gold border */
+    background: rgba(255, 215, 0, 0.1); /* Light gold background */
+    border-radius: 8px;
+}
+
+.player-item.spectating-player {
+    opacity: 0.6;
+    color: #666;
+    font-style: italic;
+}
+
+.leaderboard-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.leaderboard-item:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-name {
+    font-weight: 600;
+}
+
+.leaderboard-money {
+    color: #27ae60;
+    font-weight: 700;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+#generateRace {
+    background: #3498db;
+    color: white;
+}
+
+#generateRace:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+#startRace {
+    background: #27ae60;
+    color: white;
+}
+
+#startRace:hover:not(:disabled) {
+    background: #219a52;
+    transform: translateY(-2px);
+}
+
+#resetRace {
+    background: #e74c3c;
+    color: white;
+}
+
+#resetRace:hover:not(:disabled) {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.live-update {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 8px;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.race-track {
+    background: #2ecc71;
+    border: 4px solid #27ae60;
+    border-radius: 12px;
+    padding: 20px;
+    width: 4000px;
+    min-height: 400px;
+    position: relative;
+    
+    background-image: 
+        linear-gradient(90deg, rgba(255,255,255,0.1) 0%, transparent 50%),
+        repeating-linear-gradient(90deg, transparent, transparent 95px, rgba(255,255,255,0.1) 95px, rgba(255,255,255,0.1) 100px);
+}
+
+.countdown-display {
+    position: absolute;
+    top: 50%;
+    left: 3ch;
+    transform: translate(-50%, -50%);
+    font-size: 8em; 
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.finish-line {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    bottom: 20px;
+    width: 4px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #000 0px,
+        #000 10px,
+        #fff 10px,
+        #fff 20px
+    );
+    z-index: 0;
+}
+
+.horse {
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    left: 20px;
+    transition: left 0.1s linear;
+}
+
+.horse-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.1s linear; 
+}
+
+/* Horse Head */
+.horse-head {
+    position: absolute;
+    width: 19px;
+    height: 10px;
+    border-radius: 13px 15px 10px 2px;
+    top: 3px;
+    transform: rotate(15deg);
+    left: 40px;
+    z-index: 3;
+}
+
+/* Horse Neck */
+.horse-neck {
+    position: absolute;
+    width: 11px;
+    height: 20px;
+    border-radius: 4px;
+    top: -1px; 
+    left: 27px; 
+    z-index: 2;
+    transform: rotate(45deg); 
+    transform-origin: 0% 100%; 
+}
+
+/* Horse Torso */
+.horse-torso {
+    position: absolute;
+    width: 36px;
+    height: 19px;
+    border-radius: 10px 3px 6px 7px;
+    top: 10px;
+    left: 0px;
+    z-index: 1;
+}
+
+/* Common styles for all horse legs */
+.horse-leg {
+    position: absolute;
+    width: 6px; 
+    height: 25px; 
+    border-radius: 2px;
+    top: 20px; 
+    transform-origin: 50% 0%; 
+    transition: transform 0.2s ease-out; 
+}
+
+/* Specific positioning for each leg */
+.horse-front-leg-1 { left: 26px; }
+.horse-front-leg-2 { left: 16px; }
+.horse-back-leg-1 { left: 7px; }
+.horse-back-leg-2 { left: 0px; }
+
+/* Horse Hair Elements */
+.horse-head-hair,
+.horse-neck-hair,
+.horse-torso-hair {
+    position: absolute;
+    border-radius: inherit; 
+}
+
+.horse-head-hair {
+    width: 15px; 
+    height: 11px; 
+    border-radius: 13px 15px 10px 2px; 
+    top: 0px; 
+    left: 37px; 
+    transform: rotate(15deg); 
+    z-index: 2; 
+}
+
+.horse-neck-hair {
+    position: absolute;
+    width: 5px; 
+    height: 20px; 
+    border-radius: 3px; 
+    top: -8px; 
+    left: 28px; 
+    transform: rotate(45deg); 
+    transform-origin: 0% 100%; 
+    z-index: 2; 
+}
+
+.horse-torso-hair {
+    position: absolute;
+    width: 25px; 
+    height: 4px; 
+    border-radius: 10px 3px 6px 7px; 
+    top: 10px; 
+    left: 5px; 
+    z-index: 3; 
+}
+
+/* Horse Tail */
+.horse-tail {
+    position: absolute;
+    width: 8px; 
+    height: 25px;
+    border-radius: 10px 0 3px 3px; 
+    top: 12px; 
+    left: -4px; 
+    transform: rotate(15deg); 
+    transform-origin: top center; 
+    transition: transform 0.2s ease-out; 
+    z-index: 0; 
+}
+
+.horse-name {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c3e50;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 5;
+}
+
+.results {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    display: none;
+}
+
+.results h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.results ol {
+    list-style: none;
+    counter-reset: position;
+}
+
+.results li {
+    counter-increment: position;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 18px;
+}
+
+.results li:before {
+    content: counter(position) ". ";
+    font-weight: 700;
+    color: #3498db;
+}
+
+.results li:last-child {
+    border-bottom: none;
+}
+
+.results li:nth-child(1):before { color: #f1c40f; }
+.results li:nth-child(2):before { color: #95a5a6; }
+.results li:nth-child(3):before { color: #e67e22; }
+
+/* Golden Horse Styles - unified for all parts */
+.horse.gold .horse-body > div,
+.horse.diamond .horse-body > div,
+.horse.ruby .horse-body > div {
+    background: linear-gradient(90deg, var(--start-color) 0%, var(--mid-color) 25%, var(--start-color) 50%, var(--mid-color) 75%, var(--start-color) 100%);
+    background-size: 200% 100%; 
+    animation: goldShine 2s linear infinite;
+}
+
+/* Custom properties for different horse types */
+.horse.gold {
+    --start-color: #FFD700; /* Gold */
+    --mid-color: #FFA500;   /* Orange */
+}
+
+.horse.diamond {
+    --start-color: #E0FFFF; /* Light Cyan */
+    --mid-color: #AFEEEE;   /* Pale Turquoise */
+}
+
+.horse.ruby {
+    --start-color: #FF4500; /* OrangeRed */
+    --mid-color: #DC143C;   /* Crimson */
+}
+
+@keyframes goldShine {
+    0% { background-position: 0% 0%; } 
+    100% { background-position: -100% 0%; } 
+}
+
+/* Sparkles */
+.sparkle {
+    position: absolute;
+    color: black;
+    font-size: 0.8em; 
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none; 
+    animation: fadeAndMove 1s forwards, sparkleSpin var(--spin-duration, 0.8s) linear infinite; 
+    z-index: 10; 
+}
+
+@keyframes fadeAndMove {
+    0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
+    20% { opacity: 1; } 
+    100% { transform: translate(var(--dx), var(--dy)) scale(1.5); opacity: 0; }
+}
+
+@keyframes sparkleSpin {
+    0% { transform: rotate(90deg); }
+    100% { transform: rotate(90deg); } 
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    button {
+        width: 200px;
+    }
+    
+    .horse {
+        width: 50px;
+        height: 35px;
+    }
+    
+    .horse-name {
+        font-size: 12px;
+    }
+
+    .countdown-display {
+        font-size: 6em;
+    }
+
+    .horse-head { width: 16px; height: 9px; top: 2px; left: 32px; }
+    .horse-neck { width: 8px; height: 16px; top: -1px; left: 22px; }
+    .horse-torso { width: 30px; height: 17px; top: 8px; left: 0px; }
+    .horse-leg { width: 5px; height: 20px; top: 16px; } 
+    .horse-front-leg-1 { left: 22px; }
+    .horse-front-leg-2 { left: 14px; }
+    .horse-back-leg-1 { left: 6px; }
+    .horse-back-leg-2 { left: -1px; }
+
+    .horse-head-hair { 
+        width: 11px; 
+        height: 9px; 
+        top: -1px; 
+        left: 32px; 
+    }
+    .horse-neck-hair { 
+        width: 4px; 
+        height: 16px; 
+        top: -6px; 
+        left: 21px; 
+    }
+    .horse-torso-hair { 
+        width: 25px; 
+        height: 4px; 
+        top: 7px; 
+        left: 3px; 
+    }
+    .horse-tail { width: 7px; height: 20px; top: 12px; left: -5px; }
+
+    .game-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .setup-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tabs {
+        flex-direction: column;
+    }
+    
+    .tab-button {
+        width: 100%;
+    }
+    
+    .game-buttons {
+        flex-direction: column;
+    }
+}

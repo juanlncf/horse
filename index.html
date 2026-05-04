@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horse Race Betting Game</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Horse</h1>
+
+        <div id="default" style="display:none;">
+            <div class="input-section">
+                <textarea disabled id="horseNames" placeholder="Enter horse names (one per line)&#10;Thunder&#10;Lightning (gold)&#10;Storm&#10;Blaze&#10;Spirit">
+Cannibal Coruthers 
+Huband of the Year
+Grandma's Special Sexy Little Baby Boy
+A Gazebo
+"I Do Declare" 
+Goin' to get a pack of cigarettes
+HORSE.PNG
+2 Guys in a Horse Costume
+The Largest Fish You've Ever Seen!
+10,000 Horse Flies
+Me, I'm in the race!
+A Very Dead Horse
+Mama's Youngest Boy, Trevor (25,M)
+It's... Natassia Running Full Speed (18MPH)
+Hot King Prawn
+Horsedog
+                </textarea>
+                <div class="options" style="display:none;">
+                    <label for="countdownToggle">
+                        <input type="checkbox" id="countdownToggle" checked> Enable Countdown
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="buttons" style="margin-bottom: 8px;">
+            <button id="generateRace">Generate Race</button>
+            <button id="startRace" disabled>Start Race</button>
+            <button id="resetRace" disabled>Reset Race</button>
+        </div>
+
+        <div class="tab-content" id="game">
+            <div class="game-section">
+                <div class="player-setup">
+                    <h3>Your Horse Setup</h3>
+                    <div class="setup-grid">
+                        <div class="setup-item">
+                            <label>Horse Name:</label>
+                            <input type="text" id="playerHorseName" placeholder="Enter horse name">
+                        </div>
+                        <div class="setup-item">
+                            <label>Body Color:</label>
+                            <select id="playerBodyColor">
+                                <option value="">Random</option>
+                                <option value="#000000">Black</option>
+                                <option value="#36454F">Charcoal</option>
+                                <option value="#808080">Grey</option>
+                                <option value="#D3D3D3">Light Grey</option>
+                                <option value="#FFFFFF">White</option>
+                                <option value="#8B4513">Brown</option>
+                                <option value="#D2B48C">Tan</option>
+                                <option value="#F5F5DC">Beige</option>
+                            </select>
+                        </div>
+                        <div class="setup-item">
+                            <label>Hair Color:</label>
+                            <select id="playerHairColor">
+                                <option value="">Random</option>
+                                <option value="#000000">Black</option>
+                                <option value="#36454F">Charcoal</option>
+                                <option value="#808080">Grey</option>
+                                <option value="#D3D3D3">Light Grey</option>
+                                <option value="#FFFFFF">White</option>
+                                <option value="#8B4513">Brown</option>
+                                <option value="#D2B48C">Tan</option>
+                                <option value="#F5F5DC">Beige</option>
+                            </select>
+                        </div>
+                        <div class="setup-item">
+                            <label>Money:</label>
+                            <div class="money-controls">
+                                <button id="randomMoney">Random</button>
+                                <input type="number" id="playerMoney" min="5" max="200" value="50">
+                                <button id="confirmMoney" class="confirm-btn">✅</button> <!-- NEW BUTTON -->
+                                <span>$<span id="playerMoneyDisplay">50</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="boosts-section">
+                        <h4>Boosts (1 race only)</h4>
+                        <div class="boost-grid">
+                            <button class="boost-btn" id="goldBoost" data-cost="1">Gold Boost (+15%) - $1</button>
+                            <button class="boost-btn" id="diamondBoost" data-cost="2">Diamond Boost (+25%) - $2</button>
+                            <button class="boost-btn" id="rubyBoost" data-cost="5">Ruby Boost (+33%) - $5</button>
+                        </div>
+                        <div class="active-boosts">
+                            <span>Active Boosts: <span id="activeBoostsDisplay">None</span></span>
+                        </div>
+                    </div>
+
+                    <div class="betting-section">
+                        <h4>Place Your Bet</h4>
+                        <div class="bet-controls">
+                            <label>Bet Amount: $</label>
+                            <input type="number" id="betAmount" min="2" max="10" value="2">
+                            <button id="placeBet">Place Bet</button>
+                        </div>
+                    </div>
+
+                    <div class="game-buttons">
+                        <button id="playGame">Play Game</button>
+                        <button id="spectateGame">Spectate</button>
+                        <button id="resetGame">Reset Game</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="live-update"></div>
+
+        <div class="race-track" id="raceTrack">
+            <div class="finish-line"></div>
+            <div id="countdownDisplay" class="countdown-display"></div>
+        </div>
+
+        <div class="results" id="results"></div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
+
