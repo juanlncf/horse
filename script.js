@@ -1043,7 +1043,7 @@ class HorseRace {
                     this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);
                     this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);
                 });
-            }, 200); // Increased interval from 100ms to 200ms for performance
+            }, 100); // Increased interval from 100ms to 200ms for performance
         }
 
         this.generateBtn.disabled = true;

@@ -422,6 +422,9 @@ button {
     font-family: inherit;
 }
 
+#generateRace:disabled {
+    opacity: 0.5;
+}
 #generateRace {
     background: #3498db;
     color: white;
@@ -432,6 +435,9 @@ button {
     transform: translateY(-2px);
 }
 
+#startRace:disabled {
+    opacity: 0.5;
+}
 #startRace {
     background: #27ae60;
     color: white;
@@ -442,6 +448,9 @@ button {
     transform: translateY(-2px);
 }
 
+#resetRace:disabled {
+    opacity: 0.5;
+}
 #resetRace {
     background: #e74c3c;
     color: white;
