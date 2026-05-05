@@ -7,14 +7,10 @@ class HorseRace {
         this.trackFinishLineX = 0;
         this.startTime = 0;
         this.winner = null;
-        this.countdownEnabled = false;
+        this.countdownEnabled = true;
         this.countdownIntervalId = null;
         this.sparkleGenerationLoopId = null;
-        
-        // Game mode properties
-        this.gameMode = false;
 
-        // jm
         this.standings = []
         
         this.colorPalette = [
@@ -41,31 +37,8 @@ class HorseRace {
         this.resultsDiv = document.getElementById('results');
         this.countdownDisplay = document.getElementById('countdownDisplay');
 
-        // jm
+        this.overture = document.querySelector('.overture')
         this.liveUpdate = document.querySelector('.live-update')
-
-        // Tab elements
-        this.tabButtons = document.querySelectorAll('.tab-button');
-        this.tabContents = document.querySelectorAll('.tab-content');
-        
-        // Game elements
-        this.playerHorseNameInput = document.getElementById('playerHorseName');
-        this.playerBodyColorSelect = document.getElementById('playerBodyColor');
-        this.playerHairColorSelect = document.getElementById('playerHairColor');
-        this.playerMoneyInput = document.getElementById('playerMoney');
-        this.playerMoneyDisplay = document.getElementById('playerMoneyDisplay');
-        this.randomMoneyBtn = document.getElementById('randomMoney');
-        this.confirmMoneyBtn = document.getElementById('confirmMoney'); // NEW
-        this.betAmountInput = document.getElementById('betAmount');
-        this.placeBetBtn = document.getElementById('placeBet');
-        this.playGameBtn = document.getElementById('playGame');
-        this.spectateGameBtn = document.getElementById('spectateGame');
-        this.resetGameBtn = document.getElementById('resetGame');
-        this.currentPrizePoolDisplay = document.getElementById('currentPrizePool');
-        this.totalPrizePoolDisplay = document.getElementById('totalPrizePool');
-        this.playersListDiv = document.getElementById('playersList');
-        this.activeBoostsDisplay = document.getElementById('activeBoostsDisplay');
-        this.leaderboardListDiv = document.getElementById('leaderboardList'); // NEW
     }
     
     bindEvents() {
@@ -74,20 +47,6 @@ class HorseRace {
         this.resetBtn.addEventListener('click', () => {
             this.resetRaceInternal();
         });
-    }
-
-    resetGame() {
-        this.playerHorseNameInput.value = '';
-        this.playerBodyColorSelect.value = '';
-        this.playerHairColorSelect.value = '';
-        
-        this.resetRaceInternal(); // Use internal reset for track, etc.
-        
-        // Ensure game start buttons are enabled after a full game reset
-        this.playGameBtn.disabled = false;
-        this.spectateGameBtn.disabled = false;
-        this.resetGameBtn.disabled = false;
-        this.resetBtn.disabled = true; // The default tab's reset button should remain disabled
     }
 
     darkenColor(hex, percent) {
@@ -307,13 +266,16 @@ class HorseRace {
     
     startRace() {
         if (this.raceInProgress) return;
+
+        this.overture.currentTime = 0
+        this.overture.play()
         
         this.generateBtn.disabled = true;
         this.startBtn.disabled = true;
         this.resetBtn.disabled = false;
 
         if (this.countdownEnabled) {
-            this.startCountdown(3);
+            this.startCountdown(12);
         } else {
             this.initiateRaceStart();
         }
@@ -445,6 +407,7 @@ class HorseRace {
     }
     
     showResults() {
+        this.overture.pause()
         this.resultsDiv.style.display = 'block';
         this.resultsDiv.innerHTML = `
             <h2>Race Results</h2>
@@ -492,6 +455,7 @@ class HorseRace {
 }
 
 // Initialize the game when the page loads
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     new HorseRace();
+    
 });
