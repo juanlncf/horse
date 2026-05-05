@@ -14,7 +14,12 @@ body {
 .container {
     width: 100%;
     margin: 0 auto;
-    padding: 64px;
+    padding: 32px;
+}
+.track-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 128px;
 }
 
 h1 {
@@ -603,6 +608,7 @@ button:disabled {
     border-radius: inherit; 
 }
 
+/* IS DEAD isDead */
 .dead-body {
     transform: rotateZ(-15deg);
 }
@@ -629,6 +635,19 @@ button:disabled {
     left: 0;
     transform: rotateZ(90deg);
 }
+
+/* IS FLIES is10kFlies */
+
+.is-flies .horse-torso,
+.is-flies .horse-head,
+.is-flies .horse-neck,
+.is-flies .horse-tail,
+.is-flies .horse-neck-hair,
+.is-flies .horse-head-hair,
+.is-flies .horse-torso-hair {
+    background: transparent !important;
+}
+
 
 .horse-head-hair {
     width: 15px; 
@@ -678,15 +697,15 @@ button:disabled {
 
 .horse-name {
     position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 13px;
-    font-weight: 600;
+    top: 50%;
+    right: 100%;
+    transform: translate(-12px, -50%);
+    font-size: 12px;
+    font-weight: 500;
     color: #2c3e50;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 4px 8px;
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0 4px;
+    border-radius: 2px;
     white-space: nowrap;
     z-index: 5;
 }

@@ -106,9 +106,9 @@ class HorseRace {
             this.raceTrack.appendChild(horse.element);
         });
         
-        if (this.horses.some(horse => horse.is10kflies) && !this.sparkleGenerationLoopId) {
+        if (this.horses.some(horse => horse.is10kFlies) && !this.sparkleGenerationLoopId) {
             this.sparkleGenerationLoopId = setInterval(() => {
-                this.horses.filter(h => h.is10kflies).forEach(horse => {
+                this.horses.filter(h => h.is10kFlies).forEach(horse => {
                     this.emitSparkle(horse);
                     this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);
                     this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);this.emitSparkle(horse);
@@ -128,6 +128,8 @@ class HorseRace {
         horseElement.style.top = `${40 + index * 50}px`;
 
         const isDead = name.toLowerCase().includes('dead')
+        const is10kFlies = name.toLowerCase().includes('flies')
+        const isHorsePng = name.toLowerCase().includes('png')
 
         const hasGoldTag = name.toLowerCase().includes('(gold)');
         const hasDiamondTag = name.toLowerCase().includes('(diamond)');
@@ -149,7 +151,7 @@ class HorseRace {
         let hairColorStyle = '';
 
         if (horseType === 'normal') {
-            const bodyColor = this.getRandomColor().hex;
+            const bodyColor = is10kFlies ? '#624c29' : this.getRandomColor().hex;
             let hairBaseColor = this.getRandomColor().hex;
             let finalHairColor;
 
@@ -167,22 +169,31 @@ class HorseRace {
             hairColorStyle = `style="background-color: ${finalHairColor}"`;
         }
 
-        horseElement.innerHTML = `
-            <div class="horse-name ${isDead ? 'dead-body' : ''}">${name}</div>
-            <div class="horse-body ${isDead ? 'dead-body' : ''}">
-                <div class="horse-head" ${bodyColorStyle}></div>
-                <div class="horse-neck" ${bodyColorStyle}></div>
-                <div class="horse-torso" ${bodyColorStyle}></div>
-                <div class="horse-leg horse-front-leg-1" ${bodyColorStyle}></div>
-                <div class="horse-leg horse-front-leg-2" ${bodyColorStyle}></div>
-                <div class="horse-leg horse-back-leg-1" ${bodyColorStyle}></div>
-                <div class="horse-leg horse-back-leg-2" ${bodyColorStyle}></div>
-                <div class="horse-head-hair" ${hairColorStyle}></div>
-                <div class="horse-neck-hair" ${hairColorStyle}></div>
-                <div class="horse-torso-hair" ${hairColorStyle}></div>
-                <div class="horse-tail" ${hairColorStyle}></div>
-            </div>
-        `;
+        if(isHorsePng) {
+            horseElement.innerHTML = `
+                <div class="horse-name">${name}</div>
+                <div class="horse-body">
+                   <img width="150%" style="transform:translate(-25%, -25%);" src="./horse.png" />
+                </div>
+            `;
+        } else {
+            horseElement.innerHTML = `
+                <div class="horse-name ${isDead ? 'dead-body' : ''}">${name}</div>
+                <div class="horse-body ${isDead ? 'dead-body' : ''} ${is10kFlies ? 'is-flies' : ''}">
+                    <div class="horse-head" ${bodyColorStyle}></div>
+                    <div class="horse-neck" ${bodyColorStyle}></div>
+                    <div class="horse-torso" ${bodyColorStyle}></div>
+                    <div class="horse-leg horse-front-leg-1" ${bodyColorStyle}></div>
+                    <div class="horse-leg horse-front-leg-2" ${bodyColorStyle}></div>
+                    <div class="horse-leg horse-back-leg-1" ${bodyColorStyle}></div>
+                    <div class="horse-leg horse-back-leg-2" ${bodyColorStyle}></div>
+                    <div class="horse-head-hair" ${hairColorStyle}></div>
+                    <div class="horse-neck-hair" ${hairColorStyle}></div>
+                    <div class="horse-torso-hair" ${hairColorStyle}></div>
+                    <div class="horse-tail" ${hairColorStyle}></div>
+                </div>
+            `;
+        }
 
         const baseSpeed = 1.85 + Math.random() * 0.1;
         const finalSpeed = baseSpeed;
@@ -209,7 +220,7 @@ class HorseRace {
             bodyAnimationPhase: Math.random() * Math.PI * 2,
             tailElement: horseElement.querySelector('.horse-tail'),
             tailAnimationPhase: Math.random() * Math.PI * 2,
-            is10kflies: name.toLowerCase().includes('flies'),
+            is10kFlies: name.toLowerCase().includes('flies'),
             isDead: isDead,
         };
     }
