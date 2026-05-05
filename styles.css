@@ -11,6 +11,12 @@ body {
     line-height: 1.6;
 }
 
+.overture {
+    width: 90%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
 .container {
     width: 100%;
     margin: 0 auto;
