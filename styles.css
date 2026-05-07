@@ -13,7 +13,7 @@ body {
     /* TRACK LENGTH!!!!! */
 
 
-    --default-track-length: calc((200px * 60) + 512px);
+    --default-track-length: calc((200px * 30) + 512px);
 
 
     /* END TRACK LENGTH */
