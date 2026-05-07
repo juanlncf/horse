@@ -79,7 +79,24 @@ class HorseRace {
     }
 
     generateRace() {
-        const names = this.horseNamesInput.value.trim().split('\n').filter(name => name.trim());
+        const names = [
+            'Cannibal Coruthers ',
+            'Huband of the Year',
+            'Grandma\'s Special Sexy Little Baby Boy',
+            'A Gazebo',
+            '"I Do Declare" ',
+            'Goin\' to get a pack of cigarettes',
+            'HORSE.PNG',
+            '2 Guys in a Horse Costume',
+            'The Largest Fish You\'ve Ever Seen!',
+            '10,000 Horse Flies',
+            'Me, I\'m in the race!',
+            'A Very Dead Horse',
+            'Mama\'s Youngest Boy, Trevor (25,M)',
+            'It\'s... Natassia Running Full Speed (18MPH)',
+            'Hot King Prawn',
+            'Horsedog',
+        ]
         
         if (names.length < 2) {
             alert('Please enter at least 2 horse names');
@@ -97,6 +114,8 @@ class HorseRace {
         const minTrackHeight = 400;
         const requiredHeight = Math.max(minTrackHeight, names.length * horseHeight + 80);
         this.raceTrack.style.minHeight = `${requiredHeight}px`;
+        this.raceTrack.style.padding = '32px'
+        this.raceTrack.style.border = '4px solid #27ae60'
         
         this.trackFinishLineX = this.raceTrack.offsetWidth - 70;
         
