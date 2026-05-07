@@ -13,7 +13,7 @@ body {
     /* TRACK LENGTH!!!!! */
 
 
-    --track-length: 6000px;
+    --default-track-length: calc((200px * 60) + 512px);
 
 
     /* END TRACK LENGTH */
@@ -39,7 +39,6 @@ ul li {
 }
 
 input {
-    display: none;
     font-size: 0.85em;
     padding: 4px;
     min-width: 3ch;
@@ -47,13 +46,14 @@ input {
     field-sizing: content;
     border: none;
     border-bottom: 2px solid #000;
-    background: #eee;
+    background: #fff;
 }
 
 .overture {
+    position: sticky;
+    left: 16px;
     width: 90%;
     max-width: 480px;
-    margin: 0 auto;
 }
 
 .container {
@@ -62,7 +62,7 @@ input {
     padding: 32px;
 }
 .track-container {
-    width: var(--track-length);
+    overflow-x: auto;
     padding: 32px 256px;
 }
 
@@ -155,7 +155,7 @@ button:disabled {
     border: 0;
     border-radius: 12px;
     padding: 0;
-    width: 100%;
+    width: var(--default-track-length);
     min-height: 0px;
     position: relative;
     transition: all 1s ease-in-out;

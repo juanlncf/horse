@@ -34,6 +34,7 @@ class HorseRace {
         this.startBtn = document.getElementById('startRace');
         this.resetBtn = document.getElementById('resetRace'); // This refers to the button in the default tab.
         this.raceTrack = document.getElementById('raceTrack');
+        this.raceLength = document.getElementById('raceLength');
         this.resultsDiv = document.getElementById('results');
         this.countdownDisplay = document.getElementById('countdownDisplay');
 
@@ -114,8 +115,8 @@ class HorseRace {
         const minTrackHeight = 400;
         const requiredHeight = Math.max(minTrackHeight, names.length * horseHeight + 80);
         this.raceTrack.style.minHeight = `${requiredHeight}px`;
-        this.raceTrack.style.padding = '32px'
         this.raceTrack.style.border = '4px solid #27ae60'
+        this.raceTrack.style.width = Number(this.raceLength.value) + 512 + 'px'
         
         this.trackFinishLineX = this.raceTrack.offsetWidth - 70;
         
